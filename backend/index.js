@@ -38,6 +38,58 @@ app.get('/', async(req, res) => {
     res.json(notes)
 }
 )
+app.post('/delete-note', async (req, res) => {
+    const {id} =req.body
+    console.log(id);
+    // res.json(id)
+    try {
+        const note = await Note.deleteOne({id:id});
+        if (!note) {
+            return res.status(404).json({ error: 'Note not found' });
+        }
+        res.json(note);
+    } catch (error) {
+        // Handle errors that might occur during the deletion process
+        console.error('Error deleting note:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+});
+
+app.post('/update-note', async(req, res) => {
+    const {_id,updateField,flage} = req.body
+    console.log(_id);
+    console.log(updateField);
+    console.log(flage);
+    // if(!updateField) {
+    //     return res.status(400).json({msg: 'Please enter all fields'})
+    // }
+    if(flage){
+         await Note.findByIdAndUpdate(_id, {
+            $set: {
+                title: updateField
+            }
+        },
+        {
+            new: true
+        }
+        )
+    }
+    else{
+          await Note.findByIdAndUpdate(_id, {
+            $set: {
+                content: updateField
+            }
+        },
+        {
+            new: true
+        }
+        )
+
+    }
+    
+    res.json(_id)
+}
+)
 
     // res.send('API is running....')
 //     await Note.insertOne({title:title,
