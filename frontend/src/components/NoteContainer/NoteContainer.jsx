@@ -13,8 +13,11 @@ function NoteContainer() {
 
   //css
   const containercss = {
+    margin:"5px",
+    "color": "#0077ff",
+    "border": "2px solid #0077ff",
+    "borderRadius": "6px",
     boxSizing: " border-box",
-    border: "2px solid blue",
     minWidth: "300px",
     minHeight: "700px",
     background: "#fffff",
