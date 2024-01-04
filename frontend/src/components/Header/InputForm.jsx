@@ -39,10 +39,36 @@ const InputFormcss = {
     "minHeight" :"300px",
     "minWidth" :"300px"
   },
+  button :{
+    "--color": "#0077ff",
+    "fontFamily": "inherit",
+    "display": "inline-block",
+    "width": "6em",
+    "height":" 2.6em",
+    "lineHeight": "2.5em",
+    "overflow": "hidden",
+    "cursor": "pointer",
+    "margin": "20px",
+    "fontSize": "17px",
+   " zIndex": "1",
+    "color": "var(--color)",
+    "border": "2px solid var(--color)",
+    "borderRadius": "6px",
+    "position": "relative",
+  },
+  container :{
+    
+    margin:"5px",
+    "color": "#0077ff",
+    "border": "2px solid #0077ff",
+    "borderRadius": "6px",
+    
+  },
 };
 function InputForm() {
   return (
-    <div>
+    <div style={InputFormcss.container}>
+        <h2>New Note...</h2>
       <div style={InputFormcss}>
         <label for="input" style={InputFormcss.text} class="text">
           Title
@@ -54,19 +80,17 @@ function InputForm() {
           name="input"
           class="input"
         />
+        
       </div>
       <div style={InputFormcss}>
         <label for="input" style={InputFormcss.text} class="text">
           Content
         </label>
-        {/* <input
-        style={InputFormcss.input}
-          type="text"
-          placeholder="Write here..."
-          name="input"
-          class="input"
-        /> */}
-        <textarea style={InputFormcss.textarea} />
+        
+        <textarea
+        placeholder="Write here..."
+         style={InputFormcss.textarea} />
+         <button style={InputFormcss.button}>Save</button>
       </div>
     </div>
   );
