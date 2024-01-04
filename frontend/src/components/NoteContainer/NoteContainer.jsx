@@ -18,6 +18,7 @@ function NoteContainer() {
     minWidth: "300px",
     minHeight: "700px",
     background: "#fffff",
+    "display":"flex",
   };
   return (
     <div>

@@ -3,7 +3,7 @@ import deleteimg from "../../assets/delete.svg"
 import editimg from "../../assets/edit.svg"
 const notecss = {
   "boxSizing": " border-box",
-  "maxWidth": "300px",
+  "minWidth": "300px",
   "minHeight": "300px",
   background: "rgba(217, 217, 217, 0.58)",
   border: "2px solid white",
@@ -31,7 +31,7 @@ function Note({title ,content}) {
             <p className="content">{content}</p>
           </div>
         </div>
-          <div style={{"display" :"flex","justifyContent": "space-between","maxWidth": "300px", "padding":"3px 10px"}}>
+          <div style={{"display" :"flex","justifyContent": "space-between","minWidth": "300px","cursor":"pointer", "padding":"3px 10px"}}>
             <img src={deleteimg} alt="delete" />
             <img src={editimg} alt="update" />
           </div>
