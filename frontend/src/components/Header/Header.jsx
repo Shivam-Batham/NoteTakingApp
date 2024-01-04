@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { Link } from 'react-router-dom'
+import InputForm from './InputForm'
 
 
 
@@ -52,7 +53,7 @@ function Header() {
             }
         </ul>
      </nav>
-    
+    <InputForm />
     </header>
   )
 }
