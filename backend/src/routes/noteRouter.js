@@ -1,7 +1,9 @@
 import { Router } from "express";
-import { createNote } from "../controller/noteController.js";
+import { allNotes, createNote } from "../controller/noteController.js";
 
 const router = Router()
+
+router.route("/allnotes").get(allNotes);
 
 router.route("/createnote").post(createNote);
 router.route("/editnote").put(createNote);

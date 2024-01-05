@@ -2,7 +2,7 @@ import mongoose, {Schema} from "mongoose";
 
 const noteSchema = new Schema(
     {
-        auther:{
+        author:{
             type:String,
             default:"Unknown",
         },
