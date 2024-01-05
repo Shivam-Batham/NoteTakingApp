@@ -1,17 +1,10 @@
-import express from 'express'
-import connectDB from './src/db/dbconn.js'
-import cors from 'cors'
-import  Note  from './src/moduls/node.schema.js'
+import { asyncHandler } from "../utils/ayncHandler";
 
-const app = express()
+const createNote = asyncHandler(async (req,res)=>{
 
-app.use(express.json())
-// Connect to MongoDB
-connectDB()
-app.use(cors());
-app.use(express.json({limit: "16kb"}))
-app.use(express.urlencoded({extended: true, limit: "16kb"}))
-app.use(express.static("public"))
+})
+
+export {createNote}
 
 
 //rout=======
@@ -97,7 +90,4 @@ app.post('/update-note', async(req, res) => {
 //     })
 // })
 
-const PORT=3300;
-app.listen(PORT, () => {
-    console.log(`Server running in  mode on port ${PORT}`)   
-})
+
