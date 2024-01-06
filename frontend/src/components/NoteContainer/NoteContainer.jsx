@@ -6,20 +6,19 @@ import axios from "axios";
 function NoteContainer() {
   const [notes, setNotes] = useState([]);
   
+  const save = ()=>{
+
+  }
+
   useEffect( ()=>{
        axios
         .get("api/v1/notes/allnotes")
         .then((res) => {
-          console.log("data recived successfully");
-          return res.data;
-        }).then((notes)=>{
-          console.log(notes);
-          setNotes(notes);
-          
+          setNotes(res.data)
         }).catch((error)=>{
           console.log("Error in reciving notes", error);
         })
-  },[]);
+  },[notes]);
 
 
   //css
@@ -43,7 +42,8 @@ function NoteContainer() {
       <div style={containercss}>
         {notes.map((note) => (
           <div key={note._id}>
-          <Note  {...note} />
+            <Note  {...note} />
+            
           </div>
         ))}
       </div>

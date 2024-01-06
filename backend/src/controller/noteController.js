@@ -37,20 +37,19 @@ const allNotes = asyncHandler(async (req,res)=>{
 })
 
 const deleteNote = asyncHandler(async (req,res)=>{
-    const {id} =req.params.id;
-        console.log(id);
-        try {
-            const note = await Note.deleteOne({id:id});
-            if (!note) {
-                return res.status(404).json({ error: 'Note not found' });
-            }
-            res.json(note);
-            
-        } catch (error) {
-           
-            console.error('Error deleting note:', error);
-            res.status(500).json({ error: 'Internal server error' });
-        }
+    const id = req.body.id;
+    const note = await Note.findById(id);
+  if (!note) { 
+    return res.status(500).json({
+        success: failed,
+        message: "note not found",
+      });
+  }
+  await note.deleteOne();
+  res.status(200).json({
+    success: true,
+    message: "product deleted successfully",
+  });
 })
 
 const updateNote = asyncHandler(async (req,res)=>{
@@ -59,7 +58,7 @@ const updateNote = asyncHandler(async (req,res)=>{
     if (!note) {
       return res.status(500).json({
         success: failed,
-        message: "product not found",
+        message: "note not found",
       });
     }
   
