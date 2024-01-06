@@ -5,6 +5,7 @@ import check from "../../assets/check.svg"
 import axios from "axios";
 
 
+
 const notecss = {
   "boxSizing": " border-box",
   "minWidth": "300px",
@@ -62,14 +63,13 @@ function Note({_id,author,title ,content}) {
   }
 
   const handleUpdate= async (id,noteAuthor,noteTitle,contentText)=>{
-    const updatedData = {
+  
+    await axios.put(`api/v1/notes/updatenote`,{data :{
       id: id,
       author:noteAuthor,
       title: noteTitle,
       content: contentText,
-    };
-    
-    await axios.put(`api/v1/notes/updatenote`,{data :updatedData})
+    }})
     .then((res)=>{
       console.log("data send for updated successfully",res);
     })

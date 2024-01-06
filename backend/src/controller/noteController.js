@@ -65,11 +65,13 @@ const updateNote = asyncHandler(async (req,res)=>{
     note = await Note.findByIdAndUpdate(req.body.id, req.body, {
       new: true,
       runValidators: true,
+      useFindAndModify: false,
     });
   
     //update status
     res.status(200).json({
       success: true,
+      
       message: "updated successfully",
       note,
     });

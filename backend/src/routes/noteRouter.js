@@ -7,7 +7,7 @@ router.route("/allnotes").get(allNotes);
 
 router.route("/createnote").post(createNote);
 router.route("/updatenote").put(updateNote);
-router.route("/deletenote").delete(deleteNote);
+router.route("/deletenote").post(deleteNote);
 
 
 export default router;
