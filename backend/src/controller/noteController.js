@@ -53,7 +53,7 @@ const deleteNote = asyncHandler(async (req,res)=>{
 })
 
 const updateNote = asyncHandler(async (req,res)=>{
-    let note = await Note.findById(req.params.id);
+    let note = await Note.findById(req.body.id);
     
     if (!note) {
       return res.status(500).json({
@@ -61,13 +61,10 @@ const updateNote = asyncHandler(async (req,res)=>{
         message: "note not found",
       });
     }
-  
-    
     // if note found
-    note = await Note.findByIdAndUpdate(req.params.id, req.body, {
+    note = await Note.findByIdAndUpdate(req.body.id, req.body, {
       new: true,
       runValidators: true,
-      useFindAndModify: false,
     });
   
     //update status

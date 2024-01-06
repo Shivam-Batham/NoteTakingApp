@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import deleteimg from "../../assets/delete.svg"
-import editimg from "../../assets/edit.svg"
+import editing from "../../assets/edit.svg"
 import check from "../../assets/check.svg"
 import axios from "axios";
 
@@ -36,11 +36,13 @@ const editTxtarea={
   "borderRadius": "6px",
 }
 
-function Note({_id,title ,content}) {
+function Note({_id,author,title ,content}) {
  
-  const [contentText,setContentText] = useState(content);
   const noteId = _id;
   const [id,setId] = useState(noteId);
+  const [noteAuthor,setNoteAuthor] = useState(author);
+  const [noteTitle,setNoteTitle] = useState(title);
+  const [contentText,setContentText] = useState(content);
   const [update,setUpdate] = useState(true);
 
   const changeIcon= ()=>{
@@ -51,6 +53,7 @@ function Note({_id,title ,content}) {
       id : id
     }})
     .then((res)=>{
+      setUpdate(true);
       console.log("data send for deletion successfully",res);
     })
     .catch((error)=>{
@@ -58,17 +61,31 @@ function Note({_id,title ,content}) {
     })
   }
 
-  const handleUpdate = async ()=>{
-   
+  const handleUpdate= async (id,noteAuthor,noteTitle,contentText)=>{
+    const updatedData = {
+      id: id,
+      author:noteAuthor,
+      title: noteTitle,
+      content: contentText,
+    };
     
-  }
+    await axios.put(`api/v1/notes/updatenote`,{data :updatedData})
+    .then((res)=>{
+      console.log("data send for updated successfully",res);
+    })
+    .catch((error)=>{
+      console.log("Error during calling api of update note",error);
+    })
+    
+}
+
+
   return (
     <>
       <div>
         <div style={notecss}>
           <div >
-            <h2 style={{color:"blue", "fontSize":"30px"}} className="title">{title}</h2>
-            {/* <p className="content">{content} <br/> {id}</p> */}
+            <h3 style={{color:"blue", "fontSize":"30px"}} className="title">{title}</h3>
             <textarea
             style={update?txtarea:editTxtarea}
             rows={15}
@@ -86,14 +103,13 @@ function Note({_id,title ,content}) {
           <div style={{"display" :"flex","justifyContent": "space-between","minWidth": "300px","cursor":"pointer", "padding":"3px 10px"}}>
             <img src={deleteimg} onClick={()=>handleDelete(_id)}  alt="delete" />
             {update?
-            (<img src={editimg} onClick={()=>{
+            (<img src={editing} onClick={()=>{
               changeIcon()
-              handleEdit()
             }} alt="edit" /> )
             :
-            (<img src={check} onClick={()=>{
+            (<img src={check} onClick={(_id,noteAuthor,noteTitle,contentText)=>{
               changeIcon()
-              handleUpdate()
+              handleUpdate(_id,noteAuthor,noteTitle,contentText)
             }} alt="save" /> )
             }
           </div>
