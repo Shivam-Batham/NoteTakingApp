@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 
 import InputForm from './InputForm'
@@ -13,8 +13,10 @@ function Header() {
     }, 
     
   ]
-  const AddNote = ()=>{
 
+  const [showform,setShowform] = useState(false);
+  const AddNote = ()=>{
+    setShowform((showform)=>!showform)
   }
  //css
   const buttoncss = {
@@ -53,7 +55,7 @@ function Header() {
             }
         </ul>
      </nav>
-    <InputForm />
+      {showform?<InputForm />:""}
     </header>
   )
 }

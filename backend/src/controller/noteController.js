@@ -37,7 +37,7 @@ const allNotes = asyncHandler(async (req,res)=>{
 })
 
 const deleteNote = asyncHandler(async (req,res)=>{
-    const {id} =req.body
+    const {id} =req.params.id;
         console.log(id);
         try {
             const note = await Note.deleteOne({id:id});
@@ -45,6 +45,7 @@ const deleteNote = asyncHandler(async (req,res)=>{
                 return res.status(404).json({ error: 'Note not found' });
             }
             res.json(note);
+            
         } catch (error) {
            
             console.error('Error deleting note:', error);
