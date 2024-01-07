@@ -62,14 +62,9 @@ function Note({_id,author,title ,content}) {
     })
   }
 
-  const handleUpdate= async (id,noteAuthor,noteTitle,contentText)=>{
-  
-    await axios.put(`api/v1/notes/updatenote`,{data :{
-      id: id,
-      author:noteAuthor,
-      title: noteTitle,
-      content: contentText,
-    }})
+  const handleUpdate= async ()=>{
+
+    await axios.post(`api/v1/notes/updatenote`,{id,noteAuthor,noteTitle,contentText})
     .then((res)=>{
       console.log("data send for updated successfully",res);
     })
@@ -107,9 +102,9 @@ function Note({_id,author,title ,content}) {
               changeIcon()
             }} alt="edit" /> )
             :
-            (<img src={check} onClick={(_id,noteAuthor,noteTitle,contentText)=>{
+            (<img src={check} onClick={()=>{
               changeIcon()
-              handleUpdate(_id,noteAuthor,noteTitle,contentText)
+              handleUpdate()
             }} alt="save" /> )
             }
           </div>

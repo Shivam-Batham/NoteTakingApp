@@ -5,19 +5,17 @@ import axios from "axios";
 
 function NoteContainer() {
   const [notes, setNotes] = useState([]);
-  
-  const save = ()=>{
-
-  }
+   
 
   useEffect( ()=>{
        axios
-        .get("api/v1/notes/allnotes")
+        .get("/api/v1/notes/allnotes")
         .then((res) => {
           setNotes(res.data)
         }).catch((error)=>{
           console.log("Error in reciving notes", error);
         })
+
   },[notes]);
 
 

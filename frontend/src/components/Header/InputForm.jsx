@@ -85,7 +85,7 @@ function InputForm() {
     <div style={InputFormcss.container}>
       <h2>New Note...</h2>
       <div style={InputFormcss}>
-        <label for="input" style={InputFormcss.text} class="text">
+        <label htmlFor="input" style={InputFormcss.text} class="text">
           Author
         </label>
         <input
@@ -97,7 +97,7 @@ function InputForm() {
         />
       </div>
       <div style={InputFormcss}>
-        <label for="input" style={InputFormcss.text} class="text">
+        <label htmlFor="input" style={InputFormcss.text} class="text">
           Title
         </label>
         <input
@@ -109,7 +109,7 @@ function InputForm() {
         />
       </div>
       <div style={InputFormcss}>
-        <label for="input" style={InputFormcss.text} class="text">
+        <label htmlFor="input" style={InputFormcss.text} class="text">
           Content
         </label>
 
