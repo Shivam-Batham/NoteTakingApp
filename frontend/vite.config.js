@@ -10,7 +10,6 @@ export default defineConfig({
         target: "https://sortnotes.onrender.com",
         changeOrigin: true,
         secure: false,
-      
       },
   },
   },
