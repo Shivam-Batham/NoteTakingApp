@@ -9,7 +9,7 @@ function NoteContainer() {
 
   useEffect( ()=>{
        axios
-        .get("/api/v1/notes/allnotes")
+        .get("https://sortnotes.onrender.com/api/v1/notes/allnotes")
         .then((res) => {
           setNotes(res.data)
         }).catch((error)=>{
