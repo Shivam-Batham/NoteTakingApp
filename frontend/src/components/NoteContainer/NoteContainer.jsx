@@ -5,7 +5,7 @@ import axios from "axios";
 
 function NoteContainer() {
   const [notes, setNotes] = useState([]);
-   
+  axios.defaults.withCredentials = true;
 
   useEffect( ()=>{
        axios
