@@ -5,9 +5,8 @@ import axios from "axios";
 
 function NoteContainer() {
   const [notes, setNotes] = useState([]);
-  axios.defaults.withCredentials = true;
 
-  useEffect( ()=>{
+  // useEffect( ()=>{
        axios
         .get("https://sortnotes.onrender.com/api/v1/notes/allnotes")
         .then((res) => {
@@ -16,7 +15,7 @@ function NoteContainer() {
           console.log("Error in reciving notes", error);
         })
 
-  },[notes]);
+  // },[notes]);
 
 
   //css
