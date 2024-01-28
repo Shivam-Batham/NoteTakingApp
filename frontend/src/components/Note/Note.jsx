@@ -50,7 +50,7 @@ function Note({_id,author,title ,content}) {
     setUpdate((update)=>!update)
   }
   const handleDelete =async (id)=>{
-    await axios.delete(`api/v1/notes/deletenote`,{data :{
+    await axios.delete(`https://sortnotes.onrender.com/api/v1/notes/deletenote`,{data :{
       id : id
     }})
     .then((res)=>{
@@ -64,7 +64,7 @@ function Note({_id,author,title ,content}) {
 
   const handleUpdate= async ()=>{
 
-    await axios.post(`api/v1/notes/updatenote`,{id,noteAuthor,noteTitle,contentText})
+    await axios.post(`https://sortnotes.onrender.com/api/v1/notes/updatenote`,{id,noteAuthor,noteTitle,contentText})
     .then((res)=>{
       console.log("data send for updated successfully",res);
     })
