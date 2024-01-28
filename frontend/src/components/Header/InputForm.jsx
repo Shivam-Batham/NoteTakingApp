@@ -68,7 +68,7 @@ function InputForm() {
     try {
       //axios syantax
       await axios
-        .post("api/v1/notes/createnote", {
+        .post("https://sortnotes.onrender.com/api/v1/notes/createnote", {
           author,
           title,
           content,

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, {  useState } from "react";
 import Note from "../Note/Note";
 import axios from "axios";
 
@@ -6,7 +6,7 @@ import axios from "axios";
 function NoteContainer() {
   const [notes, setNotes] = useState([]);
 
-  // useEffect( ()=>{
+ 
        axios
         .get("https://sortnotes.onrender.com/api/v1/notes/allnotes")
         .then((res) => {
@@ -15,7 +15,7 @@ function NoteContainer() {
           console.log("Error in reciving notes", error);
         })
 
-  // },[notes]);
+
 
 
   //css
